@@ -1,0 +1,68 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #3
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #3
+==-== Title: Proactive control of approximate programs (ASPLOS 2016)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+(Your choice here)
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce a framework to tune various outputs of approximate computing to match a variety of optimization goals like time, energy, accuracy, temperature.
+The authors build on this framework by testing their solution on a 6 well known benchmarks proving that their system can be an efficient and effective way of producing an approximate program given a set of optimization points.
+The authors build this system using bayesian optimization as a way of doing efficient architecture search.
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+1. Extensible program that given a series of knobs can tune a program to provide the optimal program given the various constrains
+2. A clear set of benchmarks to prove how the system works and how extensible it is(arbitrary scores for given parameters).
+3. Provides a method of guaranteeing a maximum error over the input even if the average is much lower. 
+4. Solution is implemented in methods inspired by machine learning which allow the architecture search to run quickly and efficiently. 
+# Cons
+1. While the method provides a simple solution to a multi goal approximation this is not a really a novel idea. 
+2. It isn't super clear why the use of bayesian methods leads to a better solution.
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. How much better or worse(in terms of efficiency) is the bayesian optimization vs other methods?
+2. How does this method scale to an arbitrary number of knobs? Can it scale to 3? 4?
+
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+This paper provides a framework for which to provide optimal cost of energy to run models. Given a fixed energy budget the JouleGuard method will use various approximation methods to produce a system that can operate given the energy bounds.
+The JouleGuard framework is shown to operate with eight different approximation frameworks and can provide energy usage guarantees with close to optimal accuracy.
+Given that many systems now are bound by some form of energy requirement, JouleGuard provides a method for optimizing all workloads given their usage parameters(e.g. phone)
+
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+These in many ways are complementary because they both deal with 2 variable optimization for approximation. Paper one provides a framework that is agnostic of the optimization goal while paper two is firmly focused on maximizing accuracy given a fixed energy budget. 
+In many ways paper 2 is a more constrained and focused use case for method 1 given a fixed knob of energy cost. 
+
+Since paper 1 is focused on broad 2 know optimization it provides a more comprehensive evaluation focused firmly on showing that it can provide any approximation method and given variable goals. 
+Paper 2 on the other hand provides a more realistic use scenario for the approximation methods as it grounds it usage in different compute platforms and their related requirements.  
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

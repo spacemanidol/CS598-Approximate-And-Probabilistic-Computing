@@ -1,0 +1,75 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #6
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #6
+==-== Title: Scalpel: Customizing DNN Pruning to the Underlying Hardware
+==-==        Parallelism (ISCA 2017)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors do a rigorous study of the effects of pruned models with relation to execution time broken down by the system type:GPU, CPU, edge device. 
+Moreover, they find that in the case of some systems general pruning makes the pruned network run slower than non pruned network(with some degree of accuracy decay).
+The authors introduce a SIMD-aware pruning methodology which produced pruned networks which are optimized for the underlying hardware they will be used on. The
+The authors also introduce a concept of node pruning. Instead of having only weights in a network pruned they prune entire nodes in a network. By remove entire nodes we ensure that the entire network is sized for the SIMD optimal point.
+To prove their pruning methodology works, the authors first study the effects of pruning and find that in the case of suboptimal pruning model runtime can increase by 25% even when 89% of weights have been pruned(running on CPU)
+They also find that there is not a one-to-one correspondence between removal of MAC operations and execution time. For micro controllers a 72% decrease in MAC operation only reduces execution time by 16%.
+
+The authors wrap all this into a method they refer to asScalpel which creates an optimal pruned network for a given hardware platform it will be used with.
+Scalpel can produce an optimal DNN without accuracy loss with an average speedup of  3.54x, 2.61x, and 1.25x on the micro controller, CPU and GPU,
+respectively with reduced the model sizes by 88%, 82%, and 53% on average(when measured on MNIST, Imagenet, and CIFAR-100).
+
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+## Pros
+1. Paper first proves through experimentation that traditional pruning can produce slower inference times despite smaller networks.
+2. Paper introduces a method which can prune networks to meet given hardware requirements without additional input from user.
+3. Paper proves the effectivness of their system using a variety of benchmarks and show consistent gains.
+
+## Cons
+1. When the paper is proving the effect on execution time to pruning % it is not clear how the effects are different with the % of DNN pruned. Ideally we would have a clear presentation of % pruned vs execution time. 
+2. While authors show how scalpel works across hardware methods it would be good to understand if this holds across different types within the larger hardware groups. Are these rates what should be expected with all GPUs? CPUs? 
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. Is there variability in execution time and effect of pruning related to the specific device(say GTX Titan vs 2080ti)? If so how do the effects compare for other types of hardware?
+2. Could punning be further customized to the exact chip type being used?
+
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+This paper introduces a hardware optimization for sparse tensor inputs. The idea is that give most tensors in a pruned DNN will be 0 we can optimize and not actually do those computations and thus save on execution time and space. The paper
+
+
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+The first paper introduces a broad method for optimizing DNN based on their execution platform. The idea is that there are underlying structural differences in the execution hardware that should effect how a network is pruned.
+Unlike the first paper, the second paper introduces a method that provides improments in execution time by handling the problem the same way across hardware stacks. The second paper uses part of the underlying structure of data to optimize tensor computations regardless of underlying processing.
+
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

@@ -1,0 +1,69 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #1
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #1
+==-== Title: Managing Performance vs. Accuracy Trade-offs With Loop
+==-==        Perforation (FSE 2011)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+
+This paper is focused on the use of loop perforation for optimization of computational programs of a broad variety of domains.
+The paper bases it work on approximate computations can many times produce a program which produces solutions comparable to the reference implementation but much faster to execute.
+At the center of this paper is the constant trade off of accuracy and performance. The paper presents the evaluation of the authors LLVM compiler which takes in a program and a target perforation rate and produces an optimized executable.
+
+The authors formulate the notion of loop perforation in a simple, concise and understandable way. The compiler selects loops which account for at least 1% of all execution and will perforate the loop(by having it operate on less of the points) as long as it doesn't produce memory or program errors.
+The compiler will further cap the amount of perforated loops at 25 to limit change to the final program.  
+
+The authors experiments show that using perforations can cause programs to run 7 times faster with less that 10% change in accuracy!
+
+The authors find that some of the programs that benefit most from perforated loops are related to video or image encoding. For example x264 encoding has a loops which estimate if pixels have moved which focus on a 16x16 area. By perforating loops movement of pixels can still be detected with increased speedup.
+The authors also find that programs that are estimations, like monte carlo methods can be great examples for perforation as they are already approximate and extrapolation can be used to mitigate the perforation bias.
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+## Pros
+1. Paper introduces a simple, understandable, and scalable way of modifying programs for efficient computation.
+2. Paper provides performance of their implementation on a broad suite of benchmarks which showcase how robust the system is and how trade offs in accuracy can effect performance.
+3. Author introduce a system which clearly can be built on top of and expanded for additional work in program optimization. 
+## Cons 
+1. While the authors are detailed with their results at times it can be difficult to follow what the accuracy effects of their implementations are.
+2. Many of the tasks the authors study are part of a broader system. While the resuts of the initial task may not see much degredation it would be nice to understand what the second order effects are. For example with the x264 encoding how does the decoding of this approximate solution compare to the original? See use of back translation in the Natural Language Processing world as an example of implementation.
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. Why is there a limit of 25 perforated loops?
+2. Why not have the compiler determine the % of perforation which is doable per loop instead of a global?
+3. Why optimize argmin but not argmax?
+4. How can the sum of a loop still work with perforation? Wouldn't a sum decrease greatly and perforation increases?
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+N/A
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+N/A
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

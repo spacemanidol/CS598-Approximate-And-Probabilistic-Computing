@@ -1,0 +1,6 @@
+Explain motivation for the work
+• Clearly present the technical solution and results
+• Use your own example (not the one from the paper)
+• Outline limitations / improvements
+• Focus on concepts, leave out nonessential details
+• Discuss the impact on the related/follow-up work

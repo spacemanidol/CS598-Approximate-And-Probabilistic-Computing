@@ -1,0 +1,70 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #2
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #2
+==-== Title: Input responsiveness: using canary inputs to dynamically steer
+==-==        approximation (PLDI 2016)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+(Your choice here)
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors present a novel method for selecting what type of approximate computation method is relevant given a task. 
+This method relies on the usage of a canary sample input which is then run through a complete approximation architecture search to find the best possible approximation within the desired error bound. 
+The authors then prove the utility of their system by running their system with standard approximation methods on a benchmark of 13 diverse tasks. 
+The authors methods provide a a provable and impressive gain of average 10.2x speedup across tasks.
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+### Pros
+1. The paper produces a clean and crisp formalization of an architecture search for approximation methods. Its easy to understand and likely easy to reproduce.
+2. Paper methods can easily be expanded to include any new type of inputs and new approximation methods as they get discovered.
+3. Paper uses well established benchmarks and approximation methods which showcase how effective their method is in deriving approximation methods.
+### Cons 
+1. The paper only introduces that the size of sample canaries can effect the efficacy of generalization of approximation errors but never quantifies it. What is the effect when the canary size is the wrong? Is there some type of guarantee they can provide?
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. The authors seem to do a dimensional specific sampling to produce their canary of the sample inputs. Why not just do a random sampling of a portion of the sample input similar to batch sampling for SGD?
+2. The authors introduce the notion that different canary sizes can be required for different types of inputs but never deal with the effect of canary size on performance. Can the Canary size also be used to approximate what methods should be used?
+3. Could this method be expanded to incorporate input specific loop perforation?
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+This paper focuses on a new method of image optimization for minimizing power utilization on OLED screens. The authors leverage effects of the human visual cortex and effects of shapes and colors on energy uses to create images that provide the same value as the original with a ~60% reduction in power utilization.
+The authors then go on to verify their system by evaluating the actual effect on a device and by creating a large scale human annotation trial in which judges provide labels on how good image approximations are. 
+The authors provide a code library along with their paper which allows the broader computing community to leverage their findings in around 50 lines of code.
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+### Similarity
+1. Papers present methods of generating systems that provide a large portion of the target value at a fraction of the cost. 
+2. Both methods present task specific optimziations which leverage properties of the input data to provide methods which provide approximations of the reference output. 
+### Difference 
+1. First paper focuses on a broad method for optimizing any type of program while the second method presents a task specific input optimization. 
+2. One paper focuses on improving compute time while the next focuses on minimizing power utilization.
+3. One method is theoretical in nature(paper 1) while the other is focused on outcomes on specific devices like current generation android tablets.
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review
