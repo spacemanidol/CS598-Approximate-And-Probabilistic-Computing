@@ -1,0 +1,73 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #11
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #11
+==-== Title: Efficient Generation of Error-Inducing Floating-Point Inputs
+==-==        via Symbolic Execution (ICSE 2020)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+Authors study when floating point errors can cause  large
+precision loss and cancellation. 
+Using the knowledge gained from this study they create a method for having strategic checks in programs show when floating point errors can cause large errors in results.
+The authors then introduce a tool named FPGen which generates high error-inducing inputs for floating point programs(focused on multi-dimensional data).
+The authors formulate their error inducing input system as a method of code coverage maximization to which evaluate complex programs.
+The authors evaluate their mechanism on 3 summation algorithms
+nd 18 numerical programs from the Meschach library and
+GNU Scientific library in which they show that nearly all programs have errors and the order of the magnitude of exposed relative errors is −6.35 on average, which indicates that the result
+has only around 6 accurate digits.
+Finally the authors find that the large majority of rounding error occour when when adding two floating-point numbers whose
+exponents vary widely, e.g., −98.0+(−1.2e−15).
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros 
+1. Formulates problem clearly and uses examples to prove why its an improtant problem and the impact
+2. Produces a system that can automatically generate inputs that will cause problems if there are floating point errors. Method is scalable and task independent.
+3. Explore the error caused to provide a relative magnitude on trustable accuracy(6 digits) and find the biggest source of errors(adding two floating point numbers).
+
+# Cons
+1. Authors paper would be more impactful if they proposed a way of fixing the floating point addition errors or recovering more graceful. 
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+
+N/A
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+The authors focus on the idea of the connection between the problem of analyzing floating-point code and that of function minimization
+They then mathematicaly prove  that minimizing the weak distance (e.g., via mathematical optimization) solves the underlying problem.
+The authors then develop three applications to explore floating point errors.
+Using these applications they find floating point overload and inconsistencies in widely used GSL and GNU libraries. The authors use this system to have two confirmed bugs.
+
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+The first paper focuses on a scalable method for generating numbers that are likley to cause floating point errors while the second paper frames the finding of floating points as a function minimization. Both methods produce a way to evaluate if a program is likley to be effected by floating point overloading but the first does so in a simpler method: making inputs that are likley to break the system
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

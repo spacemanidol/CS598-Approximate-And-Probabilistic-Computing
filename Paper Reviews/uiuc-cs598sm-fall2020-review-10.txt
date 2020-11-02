@@ -1,0 +1,62 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #10
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #10
+==-== Title: Statistical Algorithmic Profiling for Randomized Approximate
+==-==        Programs (ICSE 2019)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce AXPROF, an algorithmic profiling framework for analyzing randomized approximate programs with regards to user defined criterea like accuracy and runtime.
+They then explore their system as a method to  profile 15 approximate applications from three domains – data analytics, numerical linear algebra, and approximate computing.
+Using these profiles they were able to find bugs and identify perf optimizations across different tasks.
+
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+1. Clear purpose
+2. Proven with a broad range of diverese types of programs
+
+# Cons
+N/A
+
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. Would it be possible to look at the output of a program and automatically design desired outputs for which to test?
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+The authors focus on a method for finding tests in machine learning systems that run non-deterministically and pass/fail running the same version of code.
+The authors then study 345 projects and identify 75 bug reports where developers have found flaky tests and fixed them.
+Using these found bugs the authors create FLASH a systen that can automatically find flaky tests.
+
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+The first paper introduces a broad profiling application focused on evaluating probabilistic programs on a broad set of metrics while the second focuses on identifying when tests in probabilistic coding methods are not robust to randomness. Both systems seek to test and optimize different forms of approximate programs but do so focusing on different targets.
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

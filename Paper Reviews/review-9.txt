@@ -1,0 +1,68 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #9
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #9
+==-== Title: DeepXplore: automated whitebox testing of deep learning
+==-==        systems (SOSP 2017)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+1
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce DeepXplore a system for testing DL systems for erroneous behavior. 
+DeepXplore is a system that takes input data and creates artificial inputs to get systems to disagree. 
+The idea is by having examples where systems can disagree we can automatically see where systems need work. 
+The authors introduce a new metric, neuron coverage, for measuring how many rules in a DNN are exercised by a set of inputs.
+The authors explore DeepXplore on 5 dataset with 3 computer vision systems. 
+DeepXplore uses three different systems to generate images: change the lighting, obscure parts of the inputs, random spots on images(simulating spots).
+
+
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+- Paper introduces a scalable easy to use system for generating test methodology for computer vision.
+- Paper has a notion of how complete the evalution suite based on neuron coverge. 
+# Cons
+-Unclear on the impact of the system. Yes we can know how much different systems disagree but why does it matter? What effect does it have?
+-System only works for seemingly CV systems
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. Why did they not evaluate anything but computer vision systems.
+2. Is there any effect of using these systems to train for adverarial robustness?
+3. Is there a bigger purpose than providing a notion of how much systems disagree? Seems the effect or what is supposed to be done with data is not clear. 
+
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+The authors evaluate the effect of neuron coverage as a method for evaluating how systems work with adverarial inputs.
+The authors find that having increased coverage for neuron may not be a meaningful objective for generating an evaluation set.
+Instead, the authors call for use of naturaless as an objective for generating test sets.
+
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+The first paper focuses on a method of evaluating various DNN by generating larger datasets which systems disagree on using the optimzation point of neural coverage. The second paper focuses on the potential utility of neural coverage finding that it is not the best way to generate these adverarial samples.
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review

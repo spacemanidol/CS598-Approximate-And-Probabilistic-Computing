@@ -1,0 +1,71 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #8
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #8
+==-== Title: Understanding and Optimizing Asynchronous Low-Precision
+==-==        Stochastic Gradient Descent (ISCA 2017)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+2
+
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce the Buckwild! framework which builds on the popular HogWild! frame work for multi thread/machine SGD. 
+Buckwild! uses multiple workers to execute on the inner threads of SGD(various mini batches) without any sort of locking. Additionally, the authors use fixed point lower precision representations for weights and gradient updates in order to allow minimas to be reached sooner.
+The authors then focus on framing the various ways that buckwild! can be utilized and how users of the systems must be mindful of the structure of their data(sparse or dense).
+The authors then go to prove their system works by focused on proving the effect using hardware efficiency vs statistical efficiency, which have been well studied. They find that implementation of Buckwild! can generate up to 11x hardware efficiency vs standard sgd.
+The authors also introduce a framework which they refer to as DMGC to formulate the four methods where precision can be changed,
+the input dataset(D), the model(w), gradient values(G), and intraworker communication(C). Using this formulation they explore how various numerical values effect model speedup with regards to sparse and dense data. 
+The findings are not too surprising that 8 bit across the board leads to better performance.
+Finally, the authors introduce a method of unbiased rounding using pseudo random number generation(including a non computationally prohibitive PRNG method). Using this method they show how this can lead to better usage of lower precision training because the rounding errors are unbiased.
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+1. Paper formulated a framework which can be used to describe approximation methods for SGD based methods(DMGC)
+2. Paper studies how these different variables effect model efficiency. Not surprisingly lowest precision is fastest.
+3. Paper introduces rigorous evaluation of various approximation methods to prove the hardware efficiency gains.
+# Cons
+1. Paper formulates well known solutions as a complete method. While interesting in no ways is this particularly unique. 
+2. While the authors provide bounds on speedup not much focus on what would happen below 8 bits which makes the paper feel incomplete.
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. Why stop at 8 bits
+2. Why treat density vs sparsity as binary and not a range. 
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+Authors introduce a method and experiment for successfully training a neural network with bits. 
+This method is further optimized to reduce the arithmetic precision for additions(weight updates) from 32 bits to 16 bits using chunk-based accumulation and floating point stochastic rounding. 
+Using this method the authors formulate that across the board DNN could use this method to achieve a 2-4x efficiency improvement in training.
+All the authors introduce can be done while preserving the same accuracy of the original 32 bit raining. 
+allows GEMM computations for Deep Learning to work without loss in model accuracy.
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+Paper 1 seems to focus on the optimization of use of small precision using 4 separate variables(DMGC) while paper2 is focused on the use of 8 bits robustly. Given both papers come to a similar conclusion(it works pretty well), paper 2 comes off as more impactful because it introduces methods of even updating weights in a more memory efficient method.
+Paper 1, unlike paper 2 provides a rigorous approximation of the hardware efficiency gains seen for each aspect of DMGC which they use to prove the utility of 8 bit usage.
+Paper 2 focuses on DNN vs paper 1 is focused on general SGD. 
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review
