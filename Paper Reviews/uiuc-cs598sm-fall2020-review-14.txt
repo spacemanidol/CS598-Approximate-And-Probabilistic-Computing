@@ -1,0 +1,63 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #14
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #14
+==-== Title: Gen: a general-purpose probabilistic programming system with
+==-==        programmable inference (PLDI 2019)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce a probabilistic programming framework named Gen. This framework is designed to allow researchers to explore probabilistic programming languages(PPL) with greater ease. At its core Gen is designed to allow researchers to tailor each part of their usage of PPL from model construction to inference to evaluation.  
+Gen first introduces a layer for encapsulation of the generative function interface for
+encapsulating probabilistic models. Next it creates a framework for using different modeling languages which provide different efficiency levels. Third it build a layer too exploit common conditional patterns. Fourth, it wraps this all into a library that allows for a high level of abstraction if desired with ability to tweak any part. 
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+1. Paper formulates the complex world of PPL down to many modules not previously allowed at this level of depth. In other words Gen provides more user control than any ppl before it.
+2. Gen allows user control if desired but also allows a strong level of abstraction if a user does not want to tweak the model.
+3. Authors introduce each module of the PPL and explain how it works in depth.
+4. Authors provide a well documented example to show how each of the modules of Gen can be used and what some trade offs are.
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+
+
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+The authors introduce Pyro, a probabilistic programming language designed for AI research.
+Pyro is built on top of popular framework PyTorch to enable AI researchers to move into use of Probabilistic programming. 
+Pyro essentially can be can allow researchers to explore how to use Probabilistic Programming languages with ease.
+
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+# Similarities
+1. Both papers introduce PPL with the shared goal of allowing researchers to explore usage of PPL without the headaches of writing their own ppl.
+2. Both papers cover the notion of existing frameworks having a high learning curve.
+# Differences
+1. Pyro provides a framework that sits on top of Pytorch which essentially formulates PP as a AI method. Gen on the other hand is built around the concepts of PP which pytorch users may not know.
+2. Pyro seems to aim to provide general AI users an easy to use method of building PP while Gen provides an environment which can control every aspect of a PP. 
+
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review
