@@ -1,0 +1,72 @@
+==+== CS 598SM Fall 2020 Paper Review Form
+==-== DO NOT CHANGE LINES THAT START WITH "==+==" UNLESS DIRECTED!
+==-== For further guidance, or to upload this file when you are done, go to:
+==-== https://uiuc-cs598sm-fall2020.hotcrp.com/offline
+
+==+== =====================================================================
+==+== Begin Review #15
+==+== Reviewer: Daniel Campos <dcampos3@illinois.edu>
+
+==+== Paper #15
+==-== Title: Scenic: a language for scenario specification and scene
+==-==        generation (PLDI 2019)
+
+==+== Review Readiness
+==-== Enter "Ready" if the review is ready for others to see:
+
+Ready
+
+==+== A. Overall merit
+==-== Choices:
+==-==    1. Reject
+==-==    2. Accept
+==-== Enter the number of your choice:
+
+2
+
+==+== B. Summary of the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+The authors introduce a new probabilistic programming language (PPL) called Scenic.
+Sceneic is a method for producing training data by pluging in a simulator to a description of an eviorment that is trying to be simulated.
+The authors formulate that for problems where data diversity is paramount the ability to generate data automatically that is still representative of the original world is key.
+Their system is designed to connect to a simulator, like GTAIV, and use said simulator to generate images that match the description of users desired data.
+The authors also understand that having completely defined data is unlikley to give a model the diversity of training data needed to generalize so scenic introcues the ability to inject arbitrary noise like car rotation via gausian noise.
+The authors then go on to show how the ability to produce targeted data can be integrated with regular randomly sampled data to produce more robust models. Finally, the authors proceed to describe their system in depth and describe how researchers may build upon scenic to generate RGB images, LIDAR point clouds, or trajectories from
+dynamical simulations.
+==+== C. Evaluate the Primary Paper (Pros/Cons and Discussion)
+==-== Markdown styling and LaTeX math supported.
+# Pros
+1. Scenic provides a clean and simple way of generating targeted data that matches a user spec with some notion of noise.
+2. Scenic is shown to improve model performance in targeted scenarios without decreasing model performance in overall test dataset.
+
+# Cons
+1. Scenic relies on a simulator. Without a simulator the system is essentially useless. One could argue that tasks that have simulators are unlikley to be truly lacking data as they can create near infinite amount of the data that are still bounded in physics. 
+2. The system does not provide a way of creating a truly large scale dataset. While there is a clear method for users to create data with methods they specify that still requires users understand common corner cases and distill this into PPL's interface.
+
+
+==+== D. Questions You Have about the Primary Paper
+==-== Markdown styling and LaTeX math supported.
+1. How does this scale to non simulator problems?
+
+
+==+== E. Summary of the Secondary Paper (Intro)
+==-== Markdown styling and LaTeX math supported.
+The authors introduce a framework for generating sysnthetic 2D and 3D scenes using probalistic models. 
+The authors PPL, Piucture provides a fast and scalable method for scene understanding for the expresion of complex scenes.
+The authors formulate the method as a way of comparing observed scenes with the hypothesiszed one to make generative vision more robust and efficient. 
+The authors then go on to show how Picture can be used by using it to perform 3D face analysis, 3D human pose estimation, and 3D object reconstruction.
+==+== F. Compare the Primary and Secondary Papers
+==-== (hidden from authors)
+==-== Markdown styling and LaTeX math supported.
+# Same
+1. Both methods introduce ppls for the autmatic construction of synthetic scene data.
+2. Both methods use advances in PP to create fast and scalable methods of producing arbitrarily large quantities of data. 
+
+# Different
+1. Picture is focused on scene generation focused on scene synthesis where as Scene is focused on training data generation for robotic and autonomous agents
+2. Scene requires users to specifiy objects and the relative seeds of the target data(direction, speed, angle) while Picture is more general. One could say Scene has knowledge of physics while picture does not.
+3. Scene relies on the notion of a simulator while Picture requires that configuration to be done by the user. By scene relying on the simulator it essentially outsources the prunning of non possible outcomes to video game programmers.
+
+==+== Scratchpad (for unsaved private notes)
+
+==+== End Review
